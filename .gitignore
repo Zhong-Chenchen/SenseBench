@@ -13,6 +13,7 @@ __pycache__/
 
 # Local environments and secrets
 .env
+.codex
 .venv/
 venv/
 *.log
