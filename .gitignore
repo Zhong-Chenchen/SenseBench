@@ -1,0 +1,35 @@
+# Runtime outputs
+/outputs/
+/logs/
+/cache_dir/
+/checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and secrets
+.env
+.venv/
+venv/
+*.log
+
+# OS/editor noise
+.DS_Store
+.vscode/
+.idea/
+
+# Large model artifacts
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+
+/build_dataset/
+/other_models/
+/data/
+

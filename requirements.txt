@@ -1,0 +1,24 @@
+# Core benchmark/evaluation dependencies.
+torch
+torchvision
+transformers>=4.56,<5
+pydantic>=2.12,<3
+accelerate
+pillow
+tqdm
+pandas
+openpyxl
+openai
+numpy
+opencv-python
+scipy
+scikit-image
+pyyaml
+ml-collections
+mistral-common[image]>=1.10.0
+
+# Optional but used by standard local-model inference paths.
+vllm
+
+# The project vendors a local ms-swift copy in ./ms-swift.
+# Install it with: pip install -e ./ms-swift

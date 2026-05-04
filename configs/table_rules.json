@@ -1,0 +1,133 @@
+{
+  "$note": "Keep this file simple: edit task lists used for each column.",
+  "model_order_file": "model_order.txt",
+
+  "single_perception": {
+    "$note": "All items are task names (second-level), matching <task>.json stem exactly.",
+
+    "general": [
+      "blur_gaussian",
+      "blur_motion",
+  
+      "noise_deadline",
+      "noise_gaussian",
+      "noise_impulse",
+      "noise_spatially_correlated",
+      "noise_stripe",
+
+      "compression_jpeg",
+      "compression_jpeg2000",
+      "compression_webp",
+      "compression_SPIHT",
+
+      "cloud_haze"
+    ],
+
+    "rs_centric": [
+      "cloud_real",
+        "cloud_simplex",
+      "correction_color_bandattenuation",
+      "correction_color_bandswitch",
+      "correction_compression",
+      "correction_stretching",
+
+      "missing_blind_flickering",
+      "missing_linerdeadpixels",
+      "missing_tilesmiss",
+
+      "Speckle",
+      "Sidelobe"
+    ],
+
+    "single_tasks": [
+      "blur_gaussian",
+      "blur_motion",
+
+      "cloud_haze",
+      "cloud_real",
+
+      "compression_jpeg",
+      "compression_jpeg2000",
+      "compression_webp",
+      "compression_SPIHT",
+
+      "correction_color_bandattenuation",
+      "correction_color_bandswitch",
+      "correction_compression",
+      "correction_stretching",
+
+      "missing_blind_flickering",
+      "missing_linerdeadpixels",
+      "missing_tilesmiss",
+
+      "noise_deadline",
+      "noise_gaussian",
+      "noise_impulse",
+      "noise_spatially_correlated",
+      "noise_stripe"
+    ],
+
+    "multi_tasks": [
+      "multi_distortion"
+    ]
+  },
+
+  "multi_perception": {
+    "$note": "Multi-bench perception table. general/rs_centric task lists follow the same meaning as in single_perception.",
+
+    "exclude_models": [
+      "llava-hf_llava-v1.6-vicuna-7b-hf",
+      "llava-hf_llava-v1.6-vicuna-13b-hf",
+      "GeoChat",
+      "LHRS-Bot",
+      "LHRS-Bot-nova"
+    ],
+
+    "general": [
+      "blur_gaussian",
+      "blur_motion",
+
+      "noise_deadline",
+      "noise_gaussian",
+      "noise_impulse",
+      "noise_spatially_correlated",
+      "noise_stripe",
+
+      "compression_jpeg",
+      "compression_jpeg2000",
+      "compression_webp",
+      "compression_SPIHT",
+
+      "cloud_haze"
+    ],
+
+    "rs_centric": [
+      "cloud_simplex",
+
+      "correction_color_bandattenuation",
+      "correction_color_bandswitch",
+      "correction_compression",
+      "correction_stretching",
+
+      "missing_blind_flickering",
+      "missing_linerdeadpixels",
+      "missing_tilesmiss"
+    ]
+  },
+
+  "description_single": {
+    "$note": "Paper-style description table for single bench. Aggregates description_scores over all description tasks.",
+    "exclude_models": []
+  },
+
+  "description_multi": {
+    "$note": "Paper-style description table for multi bench. Aggregates description_scores over all description tasks.",
+    "exclude_models": [
+      "llava-hf_llava-v1.6-vicuna-7b-hf",
+      "llava-hf_llava-v1.6-vicuna-13b-hf",
+      "GeoChat",
+      "LHRS-Bot",
+      "LHRS-Bot-nova"
+    ]
+  }
+}
