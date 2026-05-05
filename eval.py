@@ -215,25 +215,45 @@ Output ONLY a single integer digit (0, 1, or 2). Do NOT output any additional te
     ),
 
     # 3. Faithfulness: Focus on visual grounding and penalizing hallucinations/high-level semantics
-    "faithfulness": lambda response, label: (
+#     "faithfulness": lambda response, label: (
+#         f"""
+# Evaluate whether the description "{response}" is faithful to the low-level visual quality, avoiding hallucinations and irrelevant high-level semantics.
+
+# Reference description: "{label}"
+
+# The faithfulness metric verifies that the generated claims are visually grounded.
+# - It strictly penalizes "hallucinations" (mentioning artifacts or flaws not present in the reference).
+# - It penalizes irrelevant high-level semantics (describing the image content/scene rather than its quality/degradation).
+
+# Rate the faithfulness as follows:
+# - Score 2: The description is strictly grounded in low-level visual quality, with no hallucinations or irrelevant high-level content descriptions.
+# - Score 1: The description contains minor hallucinations or mixes in some irrelevant high-level semantics.
+# - Score 0: The description is dominated by hallucinations or focuses entirely on high-level content (e.g., describing objects) instead of visual quality.
+
+# Output ONLY a single integer digit (0, 1, or 2). Do NOT output any additional text, reasoning, or markdown.
+# """.strip()
+#     ),
+# }
+        "faithfulness": lambda response, label: (
         f"""
-Evaluate whether the description "{response}" is faithful to the low-level visual quality, avoiding hallucinations and irrelevant high-level semantics.
+    Evaluate whether the description "{response}" is faithful to the low-level visual quality in the reference, avoiding hallucinations and irrelevant high-level semantics.
 
-Reference description: "{label}"
+    Reference description: "{label}"
 
-The faithfulness metric verifies that the generated claims are visually grounded.
-- It strictly penalizes "hallucinations" (mentioning artifacts or flaws not present in the reference).
-- It penalizes irrelevant high-level semantics (describing the image content/scene rather than its quality/degradation).
+    The faithfulness metric verifies that the generated claims are visually grounded in the reference description.
+    - It strictly penalizes "hallucinations" (mentioning artifacts, flaws, severity levels, or affected visual details not supported by the reference).
+    - It penalizes irrelevant high-level semantics (describing the image content/scene rather than its quality/degradation).
+    - If a description adds unsupported concrete visual-quality details, it should not receive Score 2, even if the added details are plausible.
+    - If the primary distortion type is inconsistent with the reference, the score should be 0.
 
-Rate the faithfulness as follows:
-- Score 2: The description is strictly grounded in low-level visual quality, with no hallucinations or irrelevant high-level content descriptions.
-- Score 1: The description contains minor hallucinations or mixes in some irrelevant high-level semantics.
-- Score 0: The description is dominated by hallucinations or focuses entirely on high-level content (e.g., describing objects) instead of visual quality.
+    Rate the faithfulness as follows:
+    - Score 2: The description is strictly grounded in low-level visual quality, with no unsupported concrete claims, no severity mismatch, and no irrelevant high-level content descriptions.
+    - Score 1: The description is generally grounded but contains minor hallucinations, slight severity mismatch, vague unsupported quality claims, or mixes in some irrelevant high-level semantics.
+    - Score 0: The description is dominated by hallucinations, contradicts the reference, identifies the wrong primary distortion, or focuses entirely on high-level content (e.g., describing objects) instead of visual quality.
 
-Output ONLY a single integer digit (0, 1, or 2). Do NOT output any additional text, reasoning, or markdown.
-""".strip()
-    ),
-}
+    Output ONLY a single integer digit (0, 1, or 2). Do NOT output any additional text, reasoning, or markdown.
+    """.strip()
+    ),}
 
     def __init__(
         self,
