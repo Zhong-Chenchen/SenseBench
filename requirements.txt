@@ -20,5 +20,3 @@ mistral-common[image]>=1.10.0
 # Optional but used by standard local-model inference paths.
 vllm
 
-# The project vendors a local ms-swift copy in ./ms-swift.
-# Install it with: pip install -e ./ms-swift
