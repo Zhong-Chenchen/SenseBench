@@ -14,6 +14,7 @@ __pycache__/
 # Local environments and secrets
 .env
 .codex
+.claude
 .venv/
 venv/
 *.log
