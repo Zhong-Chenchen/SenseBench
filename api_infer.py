@@ -117,8 +117,6 @@ async def infer_one_openai(session, cfg, entry, sem, pbar):
 
 
 async def infer_one_gemini(client, model, entry, sem, pbar):
-    import google.genai as genai
-
     async with sem:
         meta = entry["meta"]
         task = meta["task"]
@@ -127,16 +125,17 @@ async def infer_one_gemini(client, model, entry, sem, pbar):
 
         for attempt in range(MAX_RETRIES):
             try:
-                content_parts = []
-                for part in entry["body"]["messages"][0]["content"]:
-                    if part["type"] == "image_url":
-                        url = part["image_url"]["url"]
-                        img_bytes, mime = _load_image_bytes(url)
-                        content_parts.append(genai.types.Part.from_bytes(data=img_bytes, mime_type=mime))
-                    elif part["type"] == "text":
-                        content_parts.append(part["text"])
-
                 def _call():
+                    import google.genai as genai
+                    content_parts = []
+                    for part in entry["body"]["messages"][0]["content"]:
+                        if part["type"] == "image_url":
+                            url = part["image_url"]["url"]
+                            img_bytes, mime = _load_image_bytes(url)
+                            content_parts.append(genai.types.Part.from_bytes(data=img_bytes, mime_type=mime))
+                        elif part["type"] == "text":
+                            content_parts.append(part["text"])
+
                     config = genai.types.GenerateContentConfig(
                         maxOutputTokens=max_tokens,
                         temperature=0.0,

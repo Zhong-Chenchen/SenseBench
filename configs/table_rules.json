@@ -8,12 +8,10 @@
     "general": [
       "blur_gaussian",
       "blur_motion",
-  
-      "noise_deadline",
+
       "noise_gaussian",
       "noise_impulse",
       "noise_spatially_correlated",
-      "noise_stripe",
 
       "compression_jpeg",
       "compression_jpeg2000",
@@ -25,7 +23,13 @@
 
     "rs_centric": [
       "cloud_real",
-        "cloud_simplex",
+      "cloud_simplex",
+
+      "noise_deadline",
+      "noise_stripe",
+      "Sidelobe",
+      "Speckle",
+
       "correction_color_bandattenuation",
       "correction_color_bandswitch",
       "correction_compression",
@@ -33,10 +37,7 @@
 
       "missing_blind_flickering",
       "missing_linerdeadpixels",
-      "missing_tilesmiss",
-
-      "Speckle",
-      "Sidelobe"
+      "missing_tilesmiss"
     ],
 
     "single_tasks": [
@@ -87,11 +88,9 @@
       "blur_gaussian",
       "blur_motion",
 
-      "noise_deadline",
       "noise_gaussian",
       "noise_impulse",
       "noise_spatially_correlated",
-      "noise_stripe",
 
       "compression_jpeg",
       "compression_jpeg2000",
@@ -102,7 +101,13 @@
     ],
 
     "rs_centric": [
+      "cloud_real",
       "cloud_simplex",
+
+      "noise_deadline",
+      "noise_stripe",
+      "Sidelobe",
+      "Speckle",
 
       "correction_color_bandattenuation",
       "correction_color_bandswitch",

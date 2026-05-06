@@ -576,8 +576,6 @@ def _build_single_perception_table(*, records: list[TaskRecord], model_order: li
     def fmt(x: float | None):
         return round(float(x), 4) if x is not None else None
 
-    sum_keys = ["whether", "what", "how", "general", "RS-centric", "single", "multi"]
-
     for model in model_order:
         model_recs = by_model.get(model, [])
         single_perc = [r for r in model_recs if r.bench == "single" and r.pair_type == "all" and r.top1 in PERCEPTION_TOP1]
@@ -597,8 +595,8 @@ def _build_single_perception_table(*, records: list[TaskRecord], model_order: li
         # This corresponds to the single-bench multi-distortion tasks (e.g., multi_distortion).
         row["multi"] = fmt(_macro_mean([r for r in single_perc if r.task in multi_set and not (r.ability == "sar" or r.task in sar_tasks)]))
 
-        # Column "sum": mean over whether/what/how columns (ignoring missing).
-        row["sum"] = fmt(_row_mean(row, ["whether", "what", "how"]))
+        # AVERAGE is the mean over the three perception question types.
+        row["AVERAGE"] = fmt(_row_mean(row, ["whether", "what", "how"]))
 
         rows.append(row)
 
@@ -633,8 +631,6 @@ def _build_multi_perception_table(
 
     def fmt(x: float | None):
         return round(float(x), 4) if x is not None else None
-
-    sum_keys = ["whether", "what", "how", "general", "RS-centric", "intra-image", "intra-temporal"]
 
     rows: list[dict[str, object]] = []
     for model in model_order:
@@ -674,8 +670,8 @@ def _build_multi_perception_table(
         # Column name requested as intra-temporal; data value comes from inter-temporal in json.
         row["intra-temporal"] = fmt(_mean(inter_scores))
 
-        # Column "sum": mean over whether/what/how columns (ignoring missing).
-        row["sum"] = fmt(_row_mean(row, ["whether", "what", "how"]))
+        # AVERAGE is the mean over the three perception question types.
+        row["AVERAGE"] = fmt(_row_mean(row, ["whether", "what", "how"]))
 
         rows.append(row)
 
