@@ -2,68 +2,92 @@
 
 import json
 import argparse
+import shutil
+import tempfile
 from pathlib import Path
 
-from datasets import Dataset, Features, Value, Image
+import pyarrow as pa
+import pyarrow.parquet as pq
 from huggingface_hub import HfApi
 
 
-FEATURES = Features({
-    "id": Value("string"),
-    "image_1": Image(),
-    "image_2": Image(),
-    "question": Value("string"),
-    "answer": Value("string"),
-    "image_count": Value("string"),
-    "modality": Value("string"),
-    "task": Value("string"),
-    "domain": Value("string"),
-    "distortion_family": Value("string"),
-    "distortion_type": Value("string"),
-    "distortion_complexity": Value("string"),
-    "comparison": Value("string"),
-})
+IMAGE_STRUCT = pa.struct([("bytes", pa.binary()), ("path", pa.string())])
+
+SCHEMA = pa.schema([
+    pa.field("id", pa.string()),
+    pa.field("image_1", IMAGE_STRUCT),
+    pa.field("image_2", IMAGE_STRUCT, nullable=True),
+    pa.field("question", pa.string()),
+    pa.field("answer", pa.string()),
+    pa.field("image_count", pa.string()),
+    pa.field("modality", pa.string()),
+    pa.field("task", pa.string()),
+    pa.field("domain", pa.string()),
+    pa.field("distortion_family", pa.string()),
+    pa.field("distortion_type", pa.string()),
+    pa.field("distortion_complexity", pa.string()),
+    pa.field("comparison", pa.string(), nullable=True),
+])
 
 
-def generate_samples(data_dir: Path):
-    """Yield one sample at a time without loading images into memory."""
+def build_table(data_dir: Path):
+    """Build a PyArrow table from questions.jsonl, embedding images as bytes."""
+    ids, image_1_list, image_2_list = [], [], []
+    questions, answers = [], []
+    image_counts, modalities, tasks, domains = [], [], [], []
+    distortion_families, distortion_types = [], []
+    distortion_complexities, comparisons = [], []
+
     questions_file = data_dir / "questions.jsonl"
-
-    if not questions_file.exists():
-        raise FileNotFoundError(f"Missing questions file: {questions_file}")
-
     with open(questions_file, encoding="utf-8") as f:
         for i, line in enumerate(f):
             record = json.loads(line)
             paths = record["images"]
             meta = record["meta"]
 
-            image_1_path = data_dir / paths[0]
-            image_2_path = data_dir / paths[1] if len(paths) > 1 else None
+            img1_path = data_dir / paths[0]
+            img2_path = data_dir / paths[1] if len(paths) > 1 else None
 
-            if not image_1_path.exists():
-                raise FileNotFoundError(f"Missing image_1 for id={record['id']}: {image_1_path}")
-            if image_2_path is not None and not image_2_path.exists():
-                raise FileNotFoundError(f"Missing image_2 for id={record['id']}: {image_2_path}")
+            if not img1_path.exists():
+                raise FileNotFoundError(f"Missing image: {img1_path}")
+            if img2_path and not img2_path.exists():
+                raise FileNotFoundError(f"Missing image: {img2_path}")
 
-            yield {
-                "id": record["id"],
-                "image_1": str(image_1_path),
-                "image_2": str(image_2_path) if image_2_path else None,
-                "question": record["question"],
-                "answer": record["answer"],
-                "image_count": meta["image_count"],
-                "modality": meta["modality"],
-                "task": meta["task"],
-                "domain": meta["domain"],
-                "distortion_family": meta["distortion_family"],
-                "distortion_type": meta["distortion_type"],
-                "distortion_complexity": meta["distortion_complexity"],
-                "comparison": meta["comparison"],
-            }
+            ids.append(record["id"])
+            image_1_list.append({"bytes": img1_path.read_bytes(), "path": img1_path.name})
+            image_2_list.append({"bytes": img2_path.read_bytes(), "path": img2_path.name} if img2_path else None)
+            questions.append(record["question"])
+            answers.append(record["answer"])
+            image_counts.append(meta["image_count"])
+            modalities.append(meta["modality"])
+            tasks.append(meta["task"])
+            domains.append(meta["domain"])
+            distortion_families.append(meta["distortion_family"])
+            distortion_types.append(meta["distortion_type"])
+            distortion_complexities.append(meta["distortion_complexity"])
+            comparisons.append(meta["comparison"])
 
             if (i + 1) % 500 == 0:
                 print(f"  Processed {i + 1} samples...")
+
+    print(f"Total samples: {len(ids)}")
+
+    table = pa.table({
+        "id": ids,
+        "image_1": image_1_list,
+        "image_2": image_2_list,
+        "question": questions,
+        "answer": answers,
+        "image_count": image_counts,
+        "modality": modalities,
+        "task": tasks,
+        "domain": domains,
+        "distortion_family": distortion_families,
+        "distortion_type": distortion_types,
+        "distortion_complexity": distortion_complexities,
+        "comparison": comparisons,
+    }, schema=SCHEMA)
+    return table
 
 
 def main():
@@ -75,24 +99,43 @@ def main():
 
     data_dir = Path(args.data_dir)
 
-    print("Building dataset...")
-    ds = Dataset.from_generator(
-        generate_samples,
-        gen_kwargs={"data_dir": data_dir},
-        features=FEATURES,
-        split="test",
-    )
-    print(f"Dataset: {ds.num_rows} rows, {ds.num_columns} columns")
-    print(f"Features: {ds.features}")
+    print("Building table...")
+    table = build_table(data_dir)
 
-    print(f"Pushing to {args.repo_id}...")
-    ds.push_to_hub(
-        args.repo_id,
-        private=args.private,
-        split="test",
-        embed_external_files=True,
-    )
-    print("Done!")
+    # Save to temp directory as parquet shards
+    tmp_dir = Path(tempfile.mkdtemp())
+    try:
+        num_shards = 10
+        rows_per_shard = (len(table) + num_shards - 1) // num_shards
+        parquet_paths = []
+        for idx in range(num_shards):
+            start = idx * rows_per_shard
+            end = min(start + rows_per_shard, len(table))
+            if start >= len(table):
+                break
+            shard = table.slice(start, end - start)
+            shard_path = tmp_dir / f"data-{idx:05d}-of-{num_shards:05d}.parquet"
+            pq.write_table(shard, shard_path, row_group_size=100)
+            parquet_paths.append(shard_path)
+            print(f"  Wrote shard {idx}: {shard_path.name} ({end - start} rows)")
+
+        # Copy README if exists
+        readme_src = data_dir.parent / "README.md"
+        if readme_src.exists():
+            shutil.copy(readme_src, tmp_dir / "README.md")
+
+        print(f"Uploading to {args.repo_id}...")
+        api = HfApi()
+        api.create_repo(args.repo_id, repo_type="dataset", private=args.private, exist_ok=True)
+        api.upload_folder(
+            repo_id=args.repo_id,
+            repo_type="dataset",
+            folder_path=str(tmp_dir),
+            path_in_repo=".",
+        )
+        print("Done!")
+    finally:
+        shutil.rmtree(tmp_dir, ignore_errors=True)
 
 
 if __name__ == "__main__":
