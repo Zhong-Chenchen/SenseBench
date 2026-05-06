@@ -2,7 +2,7 @@
 
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/Zhongchenchen/SenseBench)
 
-
+> We will regularly maintain and update SenseBench and this repository to foster a comprehensive remote sensing community.
 ---
 
 ## 📢 Latest Updates
@@ -10,6 +10,9 @@
 
 ---
 
+## ✨ Overview
+
+---
 ## LLM-as-Judge Evaluation
 ```bash
 CUDA_VISIBLE_DEVICES=0,1 lmdeploy serve api_server Unbabel/M-Prometheus-7B --server-port 23333 --tp 2 --chat-template mistral
