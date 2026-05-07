@@ -21,32 +21,11 @@
   <b>Figure:</b> Overview of the SenseBench evaluation framework. The upper part shows the <i>SensePerception</i> task taxonomy across input formats, distortion settings, and <i>whether</i>/<i>what</i>/<i>how</i> question types. The lower part illustrates <i>SenseDescription</i> examples for single and paired inputs, where responses are evaluated by <i>completeness</i>, <i>correctness</i>, and <i>faithfulness</i>, with <span style="color:red;">red</span> text indicating incorrect or unsupported statements.
 </p>
 
-## Distortions
+## 🗂️ Data Download
 
-<p align="center">
-  <img src="docs/imgs/taxonomy.png" width="68%" alt="SenseBench distortion taxonomy">
-</p>
+The SenseBench dataset is hosted on Hugging Face and can be downloaded locally for evaluation and reuse.
 
-<p align="justify">
-  <b>Figure:</b> Supported evaluation distortions in SenseBench. The taxonomy covers optical distortions, SAR distortions, and low-level quality degradations used across the <i>SensePerception</i> and <i>SenseDescription</i> tasks.
-</p>
-
-Supported evaluation distortions:
-
-| Category | SensePerception | SenseDescription |
-| --- | --- | --- |
-| Blur | Gaussian, Motion | Gaussian, Motion |
-| Cloud | Haze, Real | Haze, Simplex |
-| Compression | JPEG, JPEG2000, WEBP, SPIHT | JPEG, JPEG2000, WEBP, SPIHT |
-| Correction | Color band attenuation, Color band switch, Compression, Stretching | Color band attenuation, Color band switch, Compression, Stretching |
-| Missing | Blind flickering, Line dead pixels, Tiles missing | Blind flickering, Line dead pixels, Tiles missing |
-| Noise (optical) | Deadline, Gaussian, Impulse, Spatially correlated, Stripe | Deadline, Gaussian, Impulse, Spatially correlated, Stripe |
-| Noise (SAR) | Speckle, Sidelobe | — |
-
-<p align="justify">
-  <b>Note:</b> SenseDescription is defined on the optical subset, while SAR distortions are evaluated in SensePerception.
-</p>
-
+> Please refer to [docs/data.md](docs/data.md).
 
 ## 🛠️ Evaluation Workflow
 
