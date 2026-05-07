@@ -1,6 +1,7 @@
 # SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models
 
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/Zhongchenchen/SenseBench)
+> for (https://huggingface.co/datasets/Zhongchenchen/SenseBench_subset) 可以访问这里得到我们的数据集子集。
 
 > We will regularly maintain and update SenseBench and this repository to foster a comprehensive remote sensing community.
 ---
@@ -20,6 +21,15 @@
 <p align="justify">
   <b>Figure:</b> Overview of the SenseBench evaluation framework. The upper part shows the <i>SensePerception</i> task taxonomy across input formats, distortion settings, and <i>whether</i>/<i>what</i>/<i>how</i> question types. The lower part illustrates <i>SenseDescription</i> examples for single and paired inputs, where responses are evaluated by <i>completeness</i>, <i>correctness</i>, and <i>faithfulness</i>, with <span style="color:red;">red</span> text indicating incorrect or unsupported statements.
 </p>
+
+## 🏆 Observations
+
+- **Reference images act as effective visual anchors for general-domain VLMs, but not consistently for RSVLMs.** General-domain VLMs systematically leverage high-quality references to improve degradation perception, indicating their ability to perform comparative visual reasoning across image pairs. In contrast, RSVLMs often fail to translate reference cues into accuracy gains, exposing a critical limitation in multi-image spatial alignment under current domain-specific tuning strategies.
+
+- **Fine-grained low-level perception remains a fundamental bottleneck for VLMs in remote sensing.** Subtle and domain-specific degradations, including sensor noise, compression artifacts, cloud contamination, missing data, blur, and correction errors, remain challenging for nearly all evaluated models. These results show that high-level semantic understanding does not necessarily imply reliable sensitivity to image-quality degradations.
+
+- **Comparative perception should be evaluated independently from single-image perception.** Strong performance in non-reference settings does not guarantee robust reasoning under full-reference settings, where models must align and compare paired visual evidence. This finding supports SenseBench’s dual-protocol design and demonstrates the need to separately assess both standalone perception and reference-guided comparative reasoning.
+<hr />
 
 ## 🗂️ Data Download
 
@@ -50,5 +60,3 @@ We gratefully acknowledge the following data sources and platforms that made thi
 # 🏛 License
 
 This project is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may share and adapt the benchmark materials with appropriate attribution.
-
-For third-party models and datasets used in this repository, please refer to the original source pages and follow their respective licenses and usage terms.
