@@ -1,7 +1,7 @@
 # SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models
 
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/Zhongchenchen/SenseBench)
-> for (https://huggingface.co/datasets/Zhongchenchen/SenseBench_subset) 可以访问这里得到我们的数据集子集。
+> The dataset subset is available at [SenseBench_subset](https://huggingface.co/datasets/Zhongchenchen/SenseBench_subset) for portable access.
 
 > We will regularly maintain and update SenseBench and this repository to foster a comprehensive remote sensing community.
 ---
@@ -24,11 +24,11 @@
 
 ## 🏆 Observations
 
-- **Reference images act as effective visual anchors for general-domain VLMs, but not consistently for RSVLMs.** General-domain VLMs systematically leverage high-quality references to improve degradation perception, indicating their ability to perform comparative visual reasoning across image pairs. In contrast, RSVLMs often fail to translate reference cues into accuracy gains, exposing a critical limitation in multi-image spatial alignment under current domain-specific tuning strategies.
+- **General-domain and RS-specialized VLMs exhibit divergent low-level perceptual priors, with no model achieving balanced high accuracy across both domains.** General-domain VLMs show stronger robustness to generic degradations but fail to generalize well to physics-driven remote sensing artifacts. Conversely, RSVLMs benefit from domain-specific tuning on RS-centric distortions, yet often sacrifice generic degradation robustness, revealing that model capacity alone does not resolve the domain gap.
 
-- **Fine-grained low-level perception remains a fundamental bottleneck for VLMs in remote sensing.** Subtle and domain-specific degradations, including sensor noise, compression artifacts, cloud contamination, missing data, blur, and correction errors, remain challenging for nearly all evaluated models. These results show that high-level semantic understanding does not necessarily imply reliable sensitivity to image-quality degradations.
+- **Multi-distortion robustness remains a severe population-level bottleneck for modern VLMs.** Most models suffer substantial performance drops when multiple degradations are superimposed, including top single-distortion performers such as Gemini-3.1-pro-preview and EarthDial. This demonstrates that recognizing isolated artifacts does not imply the ability to disentangle compounded real-world degradations, making stratified multi-distortion evaluation essential.
 
-- **Comparative perception should be evaluated independently from single-image perception.** Strong performance in non-reference settings does not guarantee robust reasoning under full-reference settings, where models must align and compare paired visual evidence. This finding supports SenseBench’s dual-protocol design and demonstrates the need to separately assess both standalone perception and reference-guided comparative reasoning.
+- **Reference images act as structural anchors for paired perception, but their benefits are highly model-dependent.** General-domain VLMs generally leverage full-reference inputs to improve degradation detection, whereas RSVLMs often regress under paired-image settings, exposing weaknesses in multi-image spatial alignment. Meanwhile, strong single-image models such as InternVL3.5-38B can further improve with paired visual evidence, showing that single-image perception is not a reliable proxy for comparative reasoning.
 <hr />
 
 ## 🗂️ Data Download
