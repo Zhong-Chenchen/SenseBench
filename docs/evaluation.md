@@ -14,6 +14,8 @@ For `Description`, the evaluation step must use `llm judge`.
 
 Create a dedicated environment for SenseBench and install the project dependencies.
 
+The runnable entrypoints are kept at the repository root, while the actual implementations now live under `src/`.
+
 Example:
 
 ```bash

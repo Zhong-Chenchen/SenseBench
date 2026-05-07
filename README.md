@@ -6,8 +6,7 @@
 ---
 
 ## 📢 Latest Updates
-- **05-05-2026**: We release the complete SenseBench benchmark in the [Hugging Face Dataset](https://huggingface.co/datasets/Zhongchenchen/SenseBench). 🔥🔥
-
+- **`05-05-2026`**: We release the complete SenseBench benchmark in the [Hugging Face Dataset](https://huggingface.co/datasets/Zhongchenchen/SenseBench). 🔥🔥
 ---
 
 ## ✨ Overview
@@ -21,6 +20,8 @@
 </p>
 
 ## 🛠️ Evaluation Workflow
+
+The core inference and evaluation implementations live in `src/`. The top-level `infer.py`, `eval.py`, `table_generate.py`, and `api_infer.py` files are thin wrappers kept for convenience.
 
 > Please refer to [docs/evaluation.md](docs/evaluation.md).
 
