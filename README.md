@@ -6,7 +6,9 @@
 ---
 
 ## 📢 Latest Updates
+- **`02-05-2026`**: We release the code for inference and evaluation.
 - **`05-05-2026`**: We release the complete SenseBench benchmark in the [Hugging Face Dataset](https://huggingface.co/datasets/Zhongchenchen/SenseBench). 🔥🔥
+
 ---
 
 ## ✨ Overview
@@ -18,6 +20,10 @@
 <p align="justify">
   <b>Figure:</b> Overview of the SenseBench evaluation framework. The upper part shows the <i>SensePerception</i> task taxonomy across input formats, distortion settings, and <i>whether</i>/<i>what</i>/<i>how</i> question types. The lower part illustrates <i>SenseDescription</i> examples for single and paired inputs, where responses are evaluated by <i>completeness</i>, <i>correctness</i>, and <i>faithfulness</i>, with <span style="color:red;">red</span> text indicating incorrect or unsupported statements.
 </p>
+
+## Distortions
+Supported evaluation distortions:
+
 
 ## 🛠️ Evaluation Workflow
 
