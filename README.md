@@ -38,3 +38,9 @@ We gratefully acknowledge the following data sources and platforms that made thi
 - **OpenStreetMap (OSM)** data, contributed by a global community of volunteers and accessed through various mapping services and APIs.
 
 > Use of the Google Earth images must respect the [Google Earth terms of use](https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth). All images and their associated annotations in SenseBench can be used for academic purpose only, any commercial use is prohibited.
+
+# 🏛 License
+
+This project is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may share and adapt the benchmark materials with appropriate attribution.
+
+For third-party models and datasets used in this repository, please refer to the original source pages and follow their respective licenses and usage terms.
