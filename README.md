@@ -22,7 +22,30 @@
 </p>
 
 ## Distortions
+
+<p align="center">
+  <img src="docs/imgs/taxonomy.png" width="68%" alt="SenseBench distortion taxonomy">
+</p>
+
+<p align="justify">
+  <b>Figure:</b> Supported evaluation distortions in SenseBench. The taxonomy covers optical distortions, SAR distortions, and low-level quality degradations used across the <i>SensePerception</i> and <i>SenseDescription</i> tasks.
+</p>
+
 Supported evaluation distortions:
+
+| Category | SensePerception | SenseDescription |
+| --- | --- | --- |
+| Blur | Gaussian, Motion | Gaussian, Motion |
+| Cloud | Haze, Real | Haze, Simplex |
+| Compression | JPEG, JPEG2000, WEBP, SPIHT | JPEG, JPEG2000, WEBP, SPIHT |
+| Correction | Color band attenuation, Color band switch, Compression, Stretching | Color band attenuation, Color band switch, Compression, Stretching |
+| Missing | Blind flickering, Line dead pixels, Tiles missing | Blind flickering, Line dead pixels, Tiles missing |
+| Noise (optical) | Deadline, Gaussian, Impulse, Spatially correlated, Stripe | Deadline, Gaussian, Impulse, Spatially correlated, Stripe |
+| Noise (SAR) | Speckle, Sidelobe | — |
+
+<p align="justify">
+  <b>Note:</b> SenseDescription is defined on the optical subset, while SAR distortions are evaluated in SensePerception.
+</p>
 
 
 ## 🛠️ Evaluation Workflow
