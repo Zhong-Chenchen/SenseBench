@@ -14,7 +14,7 @@ For `Description`, the evaluation step must use `llm judge`.
 
 Create a dedicated environment for SenseBench and install the project dependencies.
 
-The runnable entrypoints are kept at the repository root, while the actual implementations now live under `src/`.
+The runnable entrypoints live under `src/`.
 
 Example:
 
@@ -55,12 +55,12 @@ The evaluator uses the OpenAI-compatible endpoint at `http://0.0.0.0:23333/v1` b
 
 Run all commands from the repository root.
 
-Use `infer.py` to generate predictions from the benchmark data.
+Use `src/infer.py` to generate predictions from the benchmark data.
 
 Example:
 
 ```bash
-python infer.py \
+python src/infer.py \
   --model AIDC-AI/Ovis2.5-9B \
   --data_root data \
   --output_dir outputs/inference \
@@ -85,12 +85,12 @@ Model outputs are saved under:
 
 ## 📝 Run Evaluation
 
-`eval.py` reads the predictions and computes task-level scores.
+`src/eval.py` reads the predictions and computes task-level scores.
 
 Basic evaluation:
 
 ```bash
-python eval.py \
+python src/eval.py \
   --output-root outputs/inference \
   --data-root data
 ```
@@ -110,7 +110,7 @@ For the standard perception tasks, the evaluator can score answers directly from
 `Description` is not a simple template-matching task. To evaluate it properly, enable the LLM-based scorer:
 
 ```bash
-python eval.py \
+python src/eval.py \
   --output-root outputs/inference \
   --data-root data \
   --description-llm \
@@ -138,12 +138,12 @@ Use this when you want per-split json files for the multi-image perception stati
 
 ## 📋 Generate Tables
 
-After evaluation, use `table_generate.py` to build the summary tables.
+After evaluation, use `src/table_generate.py` to build the summary tables.
 
 Example:
 
 ```bash
-python table_generate.py \
+python src/table_generate.py \
   --output-root outputs/inference \
   --out-dir outputs/inference/tables
 ```
@@ -164,7 +164,7 @@ By default, the script writes xlsx tables into the output folder.
 The main files you will see are:
 
 - `predictions.jsonl`: raw inference outputs
-- `evaluated.jsonl`: scored outputs after `eval.py`
-- `*.xlsx`: final summary tables from `table_generate.py`
+- `evaluated.jsonl`: scored outputs after `src/eval.py`
+- `*.xlsx`: final summary tables from `src/table_generate.py`
 
 For `Description`, the important step is to enable `--description-llm`, otherwise the description metrics will not be computed the way the benchmark expects.

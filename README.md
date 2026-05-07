@@ -21,7 +21,7 @@
 
 ## 🛠️ Evaluation Workflow
 
-The core inference and evaluation implementations live in `src/`. The top-level `infer.py`, `eval.py`, `table_generate.py`, and `api_infer.py` files are thin wrappers kept for convenience.
+The core inference and evaluation implementations live in `src/`.
 
 > Please refer to [docs/evaluation.md](docs/evaluation.md).
 
