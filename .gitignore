@@ -35,4 +35,5 @@ venv/
 /other_models/
 /data/
 /codex_code/
-
+/hugg_data/
+/docs/cankao/*

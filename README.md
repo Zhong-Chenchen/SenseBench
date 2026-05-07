@@ -20,15 +20,20 @@
   <b>Figure:</b> Overview of the SenseBench evaluation framework. The upper part shows the <i>SensePerception</i> task taxonomy across input formats, distortion settings, and <i>whether</i>/<i>what</i>/<i>how</i> question types. The lower part illustrates <i>SenseDescription</i> examples for single and paired inputs, where responses are evaluated by <i>completeness</i>, <i>correctness</i>, and <i>faithfulness</i>, with <span style="color:red;">red</span> text indicating incorrect or unsupported statements.
 </p>
 
----
 ## 🛠️ Evaluation Workflow
 
----
-## LLM-as-Judge Evaluation
-```bash
-CUDA_VISIBLE_DEVICES=0,1 lmdeploy serve api_server Unbabel/M-Prometheus-7B --server-port 23333 --tp 2 --chat-template mistral
-```
+> Please refer to [docs/evaluation.md](docs/evaluation.md).
 
-```bash
-python eval.py --models gpt --use-llm --description-llm
-```
+<hr>
+
+# 📜 Acknowledgements
+
+We gratefully acknowledge the following data sources and platforms that made this project possible:
+
+- **Google Earth** for high-resolution satellite imagery.  
+- **Google Earth Engine (GEE)** for planetary-scale geospatial data access and processing tools.
+- **Sentinel** satellite data, provided by the European Space Agency (ESA) via the Copernicus Open Access Hub.  
+- **Landsat** satellite data, provided by the U.S. Geological Survey (USGS).
+- **OpenStreetMap (OSM)** data, contributed by a global community of volunteers and accessed through various mapping services and APIs.
+
+> Use of the Google Earth images must respect the [Google Earth terms of use](https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth). All images and their associated annotations in SenseBench can be used for academic purpose only, any commercial use is prohibited.
