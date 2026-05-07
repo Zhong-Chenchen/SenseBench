@@ -20,7 +20,7 @@ def _load_question_map(path: Path) -> dict[str, dict[str, str]]:
                 continue
             sample_id = str(obj.get("id", "")).strip()
             if not sample_id:
-                raise ValueError(f"Missing id in questions.jsonl at line {lineno}")
+                raise ValueError(f"Missing id in manifest jsonl at line {lineno}")
             qmap[sample_id] = {
                 "image_1": str(obj.get("image_1", "")).strip(),
                 "image_2": str(obj.get("image_2", "")).strip(),
@@ -41,10 +41,26 @@ def _iter_parquet_rows(parquet_root: Path):
             yield parquet_file, row
 
 
-def restore_dataset(*, input_dir: Path, output_dir: Path, overwrite: bool = False) -> None:
-    questions_file = input_dir / "questions.jsonl"
-    if not questions_file.is_file():
-        raise FileNotFoundError(f"Missing questions.jsonl: {questions_file}")
+def _resolve_manifest_path(input_dir: Path, manifest_file: Path | None) -> Path:
+    if manifest_file is not None:
+        manifest_file = manifest_file if manifest_file.is_absolute() else (input_dir / manifest_file)
+        if not manifest_file.is_file():
+            raise FileNotFoundError(f"Missing manifest jsonl: {manifest_file}")
+        return manifest_file
+
+    for candidate in (
+        input_dir / "restore_manifest.jsonl",
+        input_dir / "manifest.jsonl",
+        input_dir / "questions_restore.jsonl",
+        input_dir / "questions.jsonl",
+    ):
+        if candidate.is_file():
+            return candidate
+    raise FileNotFoundError(f"No manifest jsonl found under: {input_dir}")
+
+
+def restore_dataset(*, input_dir: Path, output_dir: Path, manifest_file: Path | None = None, eval_questions_file: Path | None = None, overwrite: bool = False) -> None:
+    manifest_path = _resolve_manifest_path(input_dir, manifest_file)
 
     input_dir = input_dir.resolve()
     output_dir = output_dir.resolve()
@@ -52,7 +68,7 @@ def restore_dataset(*, input_dir: Path, output_dir: Path, overwrite: bool = Fals
         output_dir = input_dir / "original_png"
         print(f"[WARN] output-dir was the same as input-dir; using {output_dir} instead.")
 
-    qmap = _load_question_map(questions_file)
+    qmap = _load_question_map(manifest_path)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     written = 0
@@ -61,7 +77,7 @@ def restore_dataset(*, input_dir: Path, output_dir: Path, overwrite: bool = Fals
         if not sample_id:
             continue
         if sample_id not in qmap:
-            raise KeyError(f"Sample id not found in questions.jsonl: {sample_id} (from {parquet_file.name})")
+            raise KeyError(f"Sample id not found in manifest jsonl: {sample_id} (from {parquet_file.name})")
 
         image_meta = qmap[sample_id]
         for key in ("image_1", "image_2"):
@@ -83,9 +99,13 @@ def restore_dataset(*, input_dir: Path, output_dir: Path, overwrite: bool = Fals
         if written % 1000 == 0:
             print(f"Restored {written} samples...")
 
-    restored_questions = output_dir / "questions.jsonl"
-    if questions_file.resolve() != restored_questions.resolve():
-        shutil.copy2(questions_file, restored_questions)
+    if eval_questions_file is not None:
+        eval_questions_file = eval_questions_file if eval_questions_file.is_absolute() else (input_dir / eval_questions_file)
+        if not eval_questions_file.is_file():
+            raise FileNotFoundError(f"Missing eval questions jsonl: {eval_questions_file}")
+        restored_questions = output_dir / "questions.jsonl"
+        if eval_questions_file.resolve() != restored_questions.resolve():
+            shutil.copy2(eval_questions_file, restored_questions)
     readme_src = input_dir / "README.md"
     if readme_src.is_file():
         restored_readme = output_dir / "README.md"
@@ -99,10 +119,18 @@ def main():
     parser = argparse.ArgumentParser(description="Restore SenseBench HF parquet shards to PNG folders.")
     parser.add_argument("--input-dir", type=Path, default=Path("data_huggingface"))
     parser.add_argument("--output-dir", type=Path, default=Path("data_huggingface/original_png"))
+    parser.add_argument("--manifest-file", type=Path, default=None, help="Manifest jsonl used to map parquet rows back to image paths.")
+    parser.add_argument("--eval-questions-file", type=Path, default=None, help="Optional evaluation questions.jsonl to copy into the restored output folder.")
     parser.add_argument("--overwrite", action="store_true")
     args = parser.parse_args()
 
-    restore_dataset(input_dir=args.input_dir, output_dir=args.output_dir, overwrite=args.overwrite)
+    restore_dataset(
+        input_dir=args.input_dir,
+        output_dir=args.output_dir,
+        manifest_file=args.manifest_file,
+        eval_questions_file=args.eval_questions_file,
+        overwrite=args.overwrite,
+    )
 
 
 if __name__ == "__main__":
