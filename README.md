@@ -80,3 +80,19 @@ We gratefully acknowledge the following data sources and platforms that made thi
 # 🏛 License
 
 This project is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may share and adapt the benchmark materials with appropriate attribution.
+
+---
+
+## 📌 Citation
+
+Please consider citing [our paper](https://arxiv.org/abs/2605.10576) if you find SenseBench useful for your research.
+
+```bibtex
+@article{zhong2026sensebench,
+  title={SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models},
+  author={Zhong, Chen and An, Xiao and Sun, Jiaxing and Gui, Zihan and Yang, Guangyi and He, Wei},
+  journal={arXiv preprint arXiv:2605.10576},
+  year={2026},
+  url={https://arxiv.org/abs/2605.10576}
+}
+```
