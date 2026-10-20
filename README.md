@@ -1,8 +1,24 @@
-# SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models
+<h1 align="center">🛰️ SenseBench: A Benchmark for Remote Sensing<br>Low-Level Visual Perception and Description<br>in Large Vision-Language Models</h1>
 
-[![arXiv: SenseBench](https://img.shields.io/badge/arXiv-SenseBench-b31b1b)](https://arxiv.org/abs/2605.10576)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/Zhongchenchen/SenseBench)
-[![Leaderboard](https://img.shields.io/badge/Leaderboard-SenseBench-yellow)](https://zhong-chenchen.github.io/SenseBench/#results)
+<p align="center">
+  <b>Chen Zhong</b><sup>1,*</sup>,
+  <b>Xiao An</b><sup>1,*</sup>,
+  <b>Jiaxing Sun</b><sup>2</sup>,
+  <b>Zihan Gui</b><sup>1</sup>,
+  <b>Guangyi Yang</b><sup>1</sup>,
+  <b>Wei He</b><sup>1,†</sup>
+</p>
+
+<p align="center">
+  <b><sup>1</sup>Wuhan University, <sup>2</sup>Shanghai AI Laboratory</b><br>
+  <sup>*</sup>Equal contribution &nbsp; <sup>†</sup>Corresponding author
+</p>
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2605.10576"><img src="https://img.shields.io/badge/arXiv-SenseBench-b31b1b" alt="arXiv: SenseBench"></a>
+  <a href="https://huggingface.co/datasets/Zhongchenchen/SenseBench"><img src="https://img.shields.io/badge/HuggingFace-Dataset-orange" alt="HuggingFace Dataset"></a>
+  <a href="https://zhong-chenchen.github.io/SenseBench/#results"><img src="https://img.shields.io/badge/Leaderboard-SenseBench-yellow" alt="SenseBench Leaderboard"></a>
+</p>
 
 > We will regularly maintain and update SenseBench and this repository to foster a comprehensive *remote sensing* community.
 ---
