@@ -22,7 +22,6 @@
 
 > **TL;DR:** We introduce SenseBench, a benchmark with over 10K instances across 22 degradation categories for evaluating low-level visual perception and diagnostic description in remote sensing vision-language models.
 
----
 
 ## 🔥 News
 
@@ -30,7 +29,6 @@
 - **`2026.05.05`** 🤗🤗 We release the complete SenseBench benchmark in the [Hugging Face Dataset](https://huggingface.co/datasets/Zhongchenchen/SenseBench).
 - **`2026.05.02`** 🤗🤗 We release the code for inference and evaluation.
 
----
 
 ## ✨ Overview
 
@@ -90,8 +88,6 @@ Please consider citing [our paper](https://arxiv.org/abs/2605.10576) if you find
   url={https://arxiv.org/abs/2605.10576}
 }
 ```
-
----
 
 ## 🏛 License
 
