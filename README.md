@@ -22,13 +22,11 @@
 
 > **TL;DR:** We introduce SenseBench, a benchmark with over 10K instances across 22 degradation categories for evaluating low-level visual perception and diagnostic description in remote sensing vision-language models.
 
-
 ## 🔥 News
 
 - **`2026.09.25`** 🎉🎉 SenseBench has been accepted to **NeurIPS 2026** as a **Poster** (6/5/5)!
 - **`2026.05.05`** 🤗🤗 We release the complete SenseBench benchmark in the [Hugging Face Dataset](https://huggingface.co/datasets/Zhongchenchen/SenseBench).
 - **`2026.05.02`** 🤗🤗 We release the code for inference and evaluation.
-
 
 ## ✨ Overview
 
@@ -47,7 +45,6 @@
 - **Multi-distortion robustness remains a severe population-level bottleneck for modern VLMs.** Most models suffer substantial performance drops when multiple degradations are superimposed, including top single-distortion performers such as Gemini-3.1-pro-preview and EarthDial. This demonstrates that recognizing isolated artifacts does not imply the ability to disentangle compounded real-world degradations, making stratified multi-distortion evaluation essential.
 
 - **Reference images act as structural anchors for paired perception, but their benefits are highly model-dependent.** General-domain VLMs generally leverage full-reference inputs to improve degradation detection, whereas RSVLMs often regress under paired-image settings, exposing weaknesses in multi-image spatial alignment. Meanwhile, strong single-image models such as InternVL3.5-38B can further improve with paired visual evidence, showing that single-image perception is not a reliable proxy for comparative reasoning.
-<hr />
 
 ## 🗂️ Data Download
 
@@ -60,8 +57,6 @@ The SenseBench dataset is hosted on Hugging Face and can be downloaded locally f
 The core inference and evaluation implementations live in `src/`.
 
 > Please refer to [docs/evaluation.md](docs/evaluation.md).
-
-<hr>
 
 ## 📜 Acknowledgements
 
