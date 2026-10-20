@@ -20,7 +20,8 @@
   <a href="https://zhong-chenchen.github.io/SenseBench/#results"><img src="https://img.shields.io/badge/Leaderboard-SenseBench-yellow" alt="SenseBench Leaderboard"></a>
 </p>
 
-> We will regularly maintain and update SenseBench and this repository to foster a comprehensive *remote sensing* community.
+> **TL;DR:** We introduce SenseBench, a benchmark with over 10K instances across 22 degradation categories for evaluating low-level visual perception and diagnostic description in remote sensing vision-language models.
+
 ---
 
 ## 🔥 News
