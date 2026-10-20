@@ -4,8 +4,6 @@
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/Zhongchenchen/SenseBench)
 [![Leaderboard](https://img.shields.io/badge/Leaderboard-SenseBench-yellow)](https://zhong-chenchen.github.io/SenseBench/#results)
 
-> The dataset subset is available at [SenseBench_subset](https://huggingface.co/datasets/Zhongchenchen/SenseBench_subset) for portable access.
-
 > We will regularly maintain and update SenseBench and this repository to foster a comprehensive *remote sensing* community.
 ---
 
