@@ -1,6 +1,6 @@
 # SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models
 
-[![arXiv](https://img.shields.io/badge/arXiv-Paper-green)](https://arxiv.org/abs/2605.10576)
+[![arXiv: SenseBench](https://img.shields.io/badge/arXiv-SenseBench-b31b1b)](https://arxiv.org/abs/2605.10576)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/Zhongchenchen/SenseBench)
 [![Leaderboard](https://img.shields.io/badge/Leaderboard-SenseBench-yellow)](https://zhong-chenchen.github.io/SenseBench/#results)
 
