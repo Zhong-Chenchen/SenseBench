@@ -77,12 +77,6 @@ We gratefully acknowledge the following data sources and platforms that made thi
 
 > Use of the Google Earth images must respect the [Google Earth terms of use](https://about.google/brand-resource-center/products-and-services/geo-guidelines/#google-earth). All images and their associated annotations in SenseBench can be used for academic purpose only, any commercial use is prohibited.
 
-## 🏛 License
-
-This project is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may share and adapt the benchmark materials with appropriate attribution.
-
----
-
 ## 📌 Citation
 
 Please consider citing [our paper](https://arxiv.org/abs/2605.10576) if you find SenseBench useful for your research.
@@ -96,3 +90,9 @@ Please consider citing [our paper](https://arxiv.org/abs/2605.10576) if you find
   url={https://arxiv.org/abs/2605.10576}
 }
 ```
+
+---
+
+## 🏛 License
+
+This project is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may share and adapt the benchmark materials with appropriate attribution.
