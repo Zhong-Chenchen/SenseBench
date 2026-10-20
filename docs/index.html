@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models.">
+  <meta name="keywords" content="SenseBench, remote sensing, vision-language models, benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models</title>
+  <link rel="icon" type="image/x-icon" href="static/images/choice_icon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+
+  <section class="hero publication-hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">
+              SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Chen Zhong<sup>1,*</sup></span>,
+              <span class="author-block">Xiao An<sup>1,*</sup></span>,
+              <span class="author-block">Jiaxing Sun<sup>2</sup></span>,
+              <span class="author-block">Zihan Gui<sup>1</sup></span>,
+              <span class="author-block">Guangyi Yang<sup>1</sup></span>,
+              <span class="author-block">Wei He<sup>1,†</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup> Wuhan University</span>
+              <span class="author-block"><sup>2</sup> Shanghai Artificial Intelligent Laboratory</span>
+            </div>
+
+            <div class="eql-cntrb">
+              <small><sup>*</sup>Equal Contribution</small>
+              <small><br><sup>†</sup>Corresponding Author</small>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2605.10576" target="_blank" rel="noopener"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/Zhong-Chenchen/SenseBench" target="_blank" rel="noopener"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" role="img" aria-label="GitHub">
+                        <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.292-1.552 3.297-1.23 3.297-1.23.647 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.103.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                      </svg>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/Zhongchenchen/SenseBench" target="_blank" rel="noopener"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                        alt="HuggingFace" style="height: 1em;">
+                    </span>
+                    <span>HuggingFace</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://zhong-chenchen.github.io/SenseBench/" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" role="img" aria-label="Project page">
+                        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                        <path d="M3.5 12h17M12 3c2.1 2.4 3.2 5.4 3.2 9S14.1 18.6 12 21M12 3C9.9 5.4 8.8 8.4 8.8 12s1.1 6.6 3.2 9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      </svg>
+                    </span>
+                    <span>Project Page</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <img src="static/images/perdes_color.png" alt="SenseBench benchmark overview" style="max-width: 100%; height: auto;">
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="overview">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Low-level visual perception underpins reliable remote sensing (RS)
+              image analysis, yet current image quality assessment (IQA) methods
+              output uninterpretable scalar scores rather than characterizing
+              physics-driven RS degradations, deviating markedly from the
+              diagnostic needs of RS experts. While Vision-Language Models (VLMs)
+              present a compelling alternative by delivering language-grounded IQA,
+              their visual priors are heavily biased toward ground-level natural
+              images. Consequently, whether VLMs can overcome this domain gap to
+              perceive and articulate RS artifacts remains insufficiently studied.
+              To bridge this gap, we propose <strong>SenseBench</strong>, the first
+              dedicated diagnostic benchmark for RS low-level visual perception
+              and description. Driven by a physics-based hierarchical taxonomy
+              that unifies both non-reference and reference-based paradigms,
+              SenseBench features over 10K meticulously curated instances across 6
+              major and 22 fine-grained RS degradation categories. Specifically,
+              two complementary protocols are designed for evaluation: objective
+              low-level visual <em>perception</em> and subjective diagnostic
+              <em>description</em>. Comprehensive evaluation of 29 state-of-the-art
+              VLMs reveals not only skewed domain priors and multi-distortion
+              collapse, but also <em>fluency illusion</em> and a
+              <em>perception-description inversion</em> effect. We hope SenseBench
+              provides a robust evaluation testbed and high-quality diagnostic data
+              to advance the development of VLMs in RS low-level perception.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">SenseBench Results</h2>
+
+      <div class="buttons is-centered result-tabs" role="tablist" aria-label="SenseBench result tables">
+        <button class="button is-link" type="button" role="tab" aria-selected="true"
+          aria-controls="results-single" data-result-tab="results-single">
+          SensePerception single
+        </button>
+        <button class="button" type="button" role="tab" aria-selected="false"
+          aria-controls="results-paired" data-result-tab="results-paired">
+          SensePerception paired
+        </button>
+        <button class="button" type="button" role="tab" aria-selected="false"
+          aria-controls="results-description" data-result-tab="results-description">
+          SenseDescription
+        </button>
+      </div>
+
+      <div class="result-panel" id="results-single" role="tabpanel">
+        <div class="table-container">
+          <table class="table is-striped is-hoverable is-fullwidth has-text-centered" style="white-space: nowrap;">
+            <thead>
+              <tr>
+                <th rowspan="2">Model</th>
+                <th colspan="3">Question Type</th>
+                <th colspan="2">Domain</th>
+                <th colspan="2">Context</th>
+                <th rowspan="2">Average↑</th>
+              </tr>
+              <tr>
+                <th>Whether↑</th>
+                <th>What↑</th>
+                <th>How↑</th>
+                <th>General↑</th>
+                <th>RS↑</th>
+                <th>Single↑</th>
+                <th>Multi↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="has-background-warning-light"><td colspan="9" class="has-text-centered has-text-weight-bold">Human Baseline</td></tr>
+              <tr><td>HUMAN EVALUATOR</td><td>90.58%</td><td>88.62%</td><td>90.26%</td><td>90.11%</td><td>89.32%</td><td>89.75%</td><td>90.00%</td><td>89.82%</td></tr>
+              <tr class="has-background-info-light"><td colspan="9" class="has-text-centered has-text-weight-bold">General-Domain VLMs</td></tr>
+              <tr><td>GPT-5.4</td><td>68.46%</td><td>60.43%</td><td>58.54%</td><td>64.83%</td><td>62.87%</td><td>64.23%</td><td>41.50%</td><td>62.48%</td></tr>
+              <tr><td>Gemini-3.1-pro-preview</td><td>87.17%</td><td>80.17%</td><td>59.92%</td><td>79.47%</td><td>80.06%</td><td>79.68%</td><td>41.17%</td><td>75.75%</td></tr>
+              <tr><td>Ovis2.5-9B</td><td>50.39%</td><td>41.48%</td><td>37.31%</td><td>46.33%</td><td>41.48%</td><td>43.87%</td><td>29.50%</td><td>43.06%</td></tr>
+              <tr><td>Llama3.2-11B</td><td>54.17%</td><td>42.21%</td><td>38.62%</td><td>49.70%</td><td>42.02%</td><td>45.57%</td><td>46.67%</td><td>45.00%</td></tr>
+              <tr><td>Phi4-vision</td><td>51.75%</td><td>37.33%</td><td>38.38%</td><td>43.97%</td><td>42.19%</td><td>42.42%</td><td>44.83%</td><td>42.49%</td></tr>
+              <tr><td>LLaVA2-ov-7B</td><td>70.58%</td><td>67.57%</td><td>54.31%</td><td>71.07%</td><td>61.46%</td><td>67.26%</td><td>46.00%</td><td>64.15%</td></tr>
+              <tr><td>InternVL3.5-8B</td><td>56.59%</td><td>40.70%</td><td>42.38%</td><td>48.89%</td><td>44.52%</td><td>47.19%</td><td>46.83%</td><td>46.56%</td></tr>
+              <tr><td>InternVL3.5-14B</td><td>53.14%</td><td>41.77%</td><td>42.23%</td><td>46.47%</td><td>44.64%</td><td>46.47%</td><td>39.67%</td><td>45.71%</td></tr>
+              <tr><td>InternVL3.5-38B</td><td>57.70%</td><td>50.27%</td><td>25.46%</td><td>49.92%</td><td>50.52%</td><td>46.43%</td><td>36.67%</td><td>44.48%</td></tr>
+              <tr><td>InternVL3.5-30B-A3B</td><td>58.99%</td><td>47.96%</td><td>47.77%</td><td>53.30%</td><td>51.61%</td><td>52.26%</td><td>44.17%</td><td>51.57%</td></tr>
+              <tr><td>Qwen3VL-8B</td><td>64.35%</td><td>54.20%</td><td>52.38%</td><td>59.80%</td><td>53.29%</td><td>58.02%</td><td>50.33%</td><td>56.98%</td></tr>
+              <tr><td>Qwen3VL-32B</td><td>69.94%</td><td>63.65%</td><td>60.15%</td><td>70.06%</td><td>56.40%</td><td>65.92%</td><td>58.33%</td><td>64.58%</td></tr>
+              <tr><td>Qwen3VL-30B-A3B</td><td>65.66%</td><td>54.75%</td><td>50.46%</td><td>60.93%</td><td>54.83%</td><td>57.13%</td><td>58.50%</td><td>56.96%</td></tr>
+              <tr><td>KimiVL-A3B</td><td>66.11%</td><td>51.73%</td><td>49.31%</td><td>58.82%</td><td>55.89%</td><td>56.85%</td><td>47.17%</td><td>55.72%</td></tr>
+              <tr class="has-background-primary-light"><td colspan="9" class="has-text-centered has-text-weight-bold">Remote-Sensing and IQA VLMs</td></tr>
+              <tr><td>DepictQA</td><td>50.06%</td><td>31.49%</td><td>21.00%</td><td>39.00%</td><td>33.20%</td><td>35.87%</td><td>41.00%</td><td>34.18%</td></tr>
+              <tr><td>Q-Instruct-LLaVA-13B</td><td>53.95%</td><td>36.41%</td><td>48.69%</td><td>45.37%</td><td>46.98%</td><td>46.11%</td><td>40.83%</td><td>46.35%</td></tr>
+              <tr><td>Q-Instruct-LLaVA-7B</td><td>47.17%</td><td>28.11%</td><td>34.31%</td><td>37.40%</td><td>36.31%</td><td>36.57%</td><td>37.50%</td><td>36.53%</td></tr>
+              <tr><td>GeoChat</td><td>46.13%</td><td>29.80%</td><td>20.92%</td><td>34.60%</td><td>33.83%</td><td>33.57%</td><td>33.50%</td><td>32.28%</td></tr>
+              <tr><td>TEOChat</td><td>54.57%</td><td>29.99%</td><td>27.38%</td><td>37.70%</td><td>41.52%</td><td>38.51%</td><td>24.50%</td><td>37.31%</td></tr>
+              <tr><td>EarthDial</td><td>58.96%</td><td>48.06%</td><td>30.31%</td><td>46.23%</td><td>52.87%</td><td>48.89%</td><td>20.50%</td><td>45.78%</td></tr>
+              <tr><td>LHRS-Bot</td><td>54.96%</td><td>27.01%</td><td>26.15%</td><td>35.47%</td><td>40.56%</td><td>37.40%</td><td>33.17%</td><td>36.04%</td></tr>
+              <tr><td>LHRS-Bot-nova</td><td>47.83%</td><td>23.54%</td><td>21.54%</td><td>30.83%</td><td>33.85%</td><td>30.85%</td><td>41.33%</td><td>30.97%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="result-panel is-hidden" id="results-paired" role="tabpanel" hidden>
+        <div class="table-container">
+          <table class="table is-striped is-hoverable is-fullwidth has-text-centered" style="white-space: nowrap;">
+            <thead>
+              <tr>
+                <th rowspan="2">Model</th>
+                <th colspan="3">Question Type</th>
+                <th colspan="2">Domain</th>
+                <th colspan="2">Context</th>
+                <th rowspan="2">Average↑</th>
+              </tr>
+              <tr>
+                <th>Whether↑</th>
+                <th>What↑</th>
+                <th>How↑</th>
+                <th>General↑</th>
+                <th>RS↑</th>
+                <th>Intra.↑</th>
+                <th>Inter.↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="has-background-warning-light"><td colspan="9" class="has-text-centered has-text-weight-bold">Human Baseline</td></tr>
+              <tr><td>HUMAN EVALUATOR</td><td>95.28%</td><td>89.44%</td><td>82.05%</td><td>89.81%</td><td>89.87%</td><td>81.92%</td><td>89.62%</td><td>88.92%</td></tr>
+              <tr class="has-background-info-light"><td colspan="9" class="has-text-centered has-text-weight-bold">General-Domain VLMs</td></tr>
+              <tr><td>GPT-5.4</td><td>85.64%</td><td>80.45%</td><td>62.36%</td><td>76.73%</td><td>75.58%</td><td>77.50%</td><td>78.00%</td><td>76.15%</td></tr>
+              <tr><td>Gemini-3.1-pro-preview</td><td>89.64%</td><td>90.00%</td><td>64.21%</td><td>81.94%</td><td>80.63%</td><td>82.55%</td><td>84.33%</td><td>81.28%</td></tr>
+              <tr><td>Ovis2.5-9B</td><td>58.36%</td><td>60.55%</td><td>36.64%</td><td>51.52%</td><td>56.92%</td><td>51.13%</td><td>61.13%</td><td>51.85%</td></tr>
+              <tr><td>Llama3.2-11B</td><td>72.73%</td><td>32.82%</td><td>31.33%</td><td>46.00%</td><td>49.49%</td><td>45.42%</td><td>53.08%</td><td>45.63%</td></tr>
+              <tr><td>Phi4-vision</td><td>83.73%</td><td>34.64%</td><td>36.36%</td><td>52.24%</td><td>55.34%</td><td>52.64%</td><td>56.10%</td><td>51.58%</td></tr>
+              <tr><td>LLaVA2-ov-7B</td><td>69.00%</td><td>52.09%</td><td>37.62%</td><td>57.21%</td><td>51.94%</td><td>51.70%</td><td>63.52%</td><td>52.90%</td></tr>
+              <tr><td>InternVL3.5-8B</td><td>51.27%</td><td>57.55%</td><td>63.92%</td><td>52.61%</td><td>62.13%</td><td>56.37%</td><td>57.74%</td><td>57.58%</td></tr>
+              <tr><td>InternVL3.5-14B</td><td>56.91%</td><td>61.27%</td><td>56.64%</td><td>54.85%</td><td>63.24%</td><td>57.92%</td><td>60.00%</td><td>58.27%</td></tr>
+              <tr><td>InternVL3.5-38B</td><td>56.00%</td><td>62.73%</td><td>52.73%</td><td>51.94%</td><td>65.30%</td><td>59.62%</td><td>52.70%</td><td>57.15%</td></tr>
+              <tr><td>InternVL3.5-30B-A3B</td><td>68.73%</td><td>66.64%</td><td>62.80%</td><td>63.58%</td><td>70.28%</td><td>65.52%</td><td>69.06%</td><td>66.06%</td></tr>
+              <tr><td>Qwen3VL-8B</td><td>72.00%</td><td>66.55%</td><td>51.33%</td><td>63.64%</td><td>66.48%</td><td>63.25%</td><td>69.18%</td><td>63.29%</td></tr>
+              <tr><td>Qwen3VL-32B</td><td>79.27%</td><td>75.82%</td><td>57.62%</td><td>70.30%</td><td>75.73%</td><td>70.57%</td><td>78.24%</td><td>70.90%</td></tr>
+              <tr><td>Qwen3VL-30B-A3B</td><td>91.55%</td><td>60.55%</td><td>54.69%</td><td>69.82%</td><td>72.09%</td><td>66.60%</td><td>82.01%</td><td>68.93%</td></tr>
+              <tr><td>KimiVL-A3B</td><td>71.45%</td><td>53.73%</td><td>49.51%</td><td>58.18%</td><td>60.95%</td><td>54.95%</td><td>71.19%</td><td>58.23%</td></tr>
+              <tr class="has-background-primary-light"><td colspan="9" class="has-text-centered has-text-weight-bold">Remote-Sensing and IQA VLMs</td></tr>
+              <tr><td>DepictQA</td><td>60.18%</td><td>23.09%</td><td>23.55%</td><td>41.82%</td><td>29.39%</td><td>37.03%</td><td>42.44%</td><td>35.61%</td></tr>
+              <tr><td>TEOChat</td><td>34.55%</td><td>30.00%</td><td>37.06%</td><td>31.64%</td><td>35.81%</td><td>35.33%</td><td>28.43%</td><td>33.87%</td></tr>
+              <tr><td>EarthDial</td><td>26.91%</td><td>50.73%</td><td>40.28%</td><td>38.06%</td><td>40.63%</td><td>43.92%</td><td>26.54%</td><td>39.31%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="result-panel is-hidden" id="results-description" role="tabpanel" hidden>
+        <div class="table-container">
+          <table class="table is-striped is-hoverable is-fullwidth has-text-centered" style="white-space: nowrap;">
+            <thead>
+              <tr>
+                <th rowspan="2">Model</th>
+                <th colspan="4">Single Image</th>
+                <th colspan="4">Paired Images</th>
+              </tr>
+              <tr>
+                <th>Complete.↑</th>
+                <th>Correct.↑</th>
+                <th>Faithful.↑</th>
+                <th>Sum↑</th>
+                <th>Complete.↑</th>
+                <th>Correct.↑</th>
+                <th>Faithful.↑</th>
+                <th>Sum↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="has-background-warning-light"><td colspan="9" class="has-text-centered has-text-weight-bold">Human Baseline</td></tr>
+              <tr><td>HUMAN EVALUATOR</td><td>1.70</td><td>1.57</td><td>1.92</td><td>5.19</td><td>1.70</td><td>1.45</td><td>1.64</td><td>4.79</td></tr>
+              <tr class="has-background-info-light"><td colspan="9" class="has-text-centered has-text-weight-bold">General-Domain VLMs</td></tr>
+              <tr><td>GPT-5.4</td><td>1.84</td><td>1.47</td><td>1.56</td><td>4.87</td><td>1.75</td><td>1.13</td><td>1.22</td><td>4.10</td></tr>
+              <tr><td>Gemini-3.1-pro-preview</td><td>1.73</td><td>1.45</td><td>1.53</td><td>4.71</td><td>1.70</td><td>1.49</td><td>1.50</td><td>4.69</td></tr>
+              <tr><td>Ovis2.5-9B</td><td>1.38</td><td>1.44</td><td>1.93</td><td>4.75</td><td>1.10</td><td>1.35</td><td>1.76</td><td>4.21</td></tr>
+              <tr><td>Llama-3.2-11B</td><td>0.79</td><td>0.63</td><td>1.11</td><td>2.53</td><td>0.97</td><td>0.67</td><td>0.94</td><td>2.58</td></tr>
+              <tr><td>Phi4-vision</td><td>1.05</td><td>0.75</td><td>1.73</td><td>3.53</td><td>0.83</td><td>0.09</td><td>0.62</td><td>1.54</td></tr>
+              <tr><td>LLaVA2-ov-7B</td><td>0.92</td><td>1.19</td><td>1.76</td><td>3.87</td><td>1.01</td><td>0.46</td><td>0.95</td><td>2.42</td></tr>
+              <tr><td>InternVL3.5-8B</td><td>1.19</td><td>0.85</td><td>1.74</td><td>3.78</td><td>0.80</td><td>0.37</td><td>0.75</td><td>1.92</td></tr>
+              <tr><td>InternVL3.5-14B</td><td>1.20</td><td>0.81</td><td>1.88</td><td>3.89</td><td>0.70</td><td>0.35</td><td>0.74</td><td>1.79</td></tr>
+              <tr><td>InternVL3.5-38B</td><td>1.01</td><td>0.71</td><td>1.73</td><td>3.45</td><td>0.84</td><td>0.64</td><td>0.89</td><td>2.37</td></tr>
+              <tr><td>InternVL3.5-30B-A3B</td><td>0.97</td><td>0.66</td><td>1.60</td><td>3.23</td><td>0.82</td><td>0.42</td><td>0.86</td><td>2.10</td></tr>
+              <tr><td>Qwen3VL-8B</td><td>1.24</td><td>0.99</td><td>1.85</td><td>4.08</td><td>1.23</td><td>0.66</td><td>1.24</td><td>3.13</td></tr>
+              <tr><td>Qwen3VL-32B</td><td>1.32</td><td>1.06</td><td>1.91</td><td>4.29</td><td>1.46</td><td>1.11</td><td>1.61</td><td>4.18</td></tr>
+              <tr><td>Qwen3VL-30B-A3B</td><td>1.29</td><td>1.09</td><td>1.82</td><td>4.20</td><td>1.15</td><td>0.81</td><td>1.22</td><td>3.18</td></tr>
+              <tr><td>KimiVL-A3B</td><td>0.76</td><td>0.78</td><td>1.08</td><td>2.62</td><td>0.97</td><td>0.84</td><td>1.09</td><td>2.90</td></tr>
+              <tr class="has-background-primary-light"><td colspan="9" class="has-text-centered has-text-weight-bold">Remote-Sensing and IQA VLMs</td></tr>
+              <tr><td>DepictQA</td><td>1.50</td><td>0.97</td><td>1.19</td><td>3.66</td><td>1.11</td><td>0.31</td><td>1.05</td><td>2.47</td></tr>
+              <tr><td>Q-Instruct-LLaVA-13B</td><td>1.04</td><td>1.07</td><td>1.21</td><td>3.32</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
+              <tr><td>Q-Instruct-LLaVA-7B</td><td>1.06</td><td>1.07</td><td>1.18</td><td>3.31</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
+              <tr><td>GeoChat</td><td>0.83</td><td>0.32</td><td>0.90</td><td>2.05</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
+              <tr><td>TEOChat</td><td>0.84</td><td>0.39</td><td>1.38</td><td>2.61</td><td>0.37</td><td>0.19</td><td>0.45</td><td>1.01</td></tr>
+              <tr><td>EarthDial</td><td>0.22</td><td>0.35</td><td>0.52</td><td>1.09</td><td>0.00</td><td>0.00</td><td>0.23</td><td>0.23</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="has-text-centered is-size-7 has-text-grey">
+        Main-paper results reproduced from Tables 2–4 of the
+        <a href="https://arxiv.org/abs/2605.10576" target="_blank" rel="noopener">SenseBench paper</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="citation">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-centered">BibTeX</h2>
+          <pre class="project-bibtex"><code>@misc{zhong2026sensebenchbenchmarkremotesensing,
+      title={SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models},
+      author={Chen Zhong and Xiao An and Jiaxing Sun and Zihan Gui and Guangyi Yang and Wei He},
+      year={2026},
+      eprint={2605.10576},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2605.10576},
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        This website is based on the Academic Project Page Template, adopted from the Nerfies project page.
+      </p>
+    </div>
+  </footer>
+
+  <script src="static/js/sensebench-results.js"></script>
+
+</body>
+
+</html>

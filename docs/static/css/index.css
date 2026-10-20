@@ -1,0 +1,418 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.publication-hero .hero-body {
+  padding-bottom: 1.5rem;
+}
+
+.publication-hero + .section {
+  padding-top: 1.5rem;
+}
+
+.publication-links .icon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  padding: 20px;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+.slider-pagination .slider-page {
+  background: #000000;
+}
+
+.eql-cntrb { 
+  font-size: smaller;
+}
+
+th span {
+  font-size: 0.8em;
+  color: #888;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+h3 {
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  color: #2e2e2e;
+  margin-top: 2rem;
+  border-left: 5px solid #3273dc;
+  padding-left: 1rem;
+  background-color: #f9f9f9;
+}
+
+#leaderboard-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+#perception-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+#reasoning-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+/* Table container styles */
+.table-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 2rem;
+}
+
+.table th {
+  position: sticky;
+  top: 0;
+  background-color: #f5f5f5;
+  z-index: 10;
+}
+
+.table th span {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.group-proprietary, .group-general, .group-remote {
+  transition: background-color 0.2s ease;
+}
+
+.group-proprietary:hover, .group-general:hover, .group-remote:hover {
+  background-color: #f0f8ff !important;
+}
+
+.has-background-warning-light, .has-background-info-light, .has-background-primary-light {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.has-background-warning-light:hover, .has-background-info-light:hover, .has-background-primary-light:hover {
+  opacity: 0.8;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    font-size: 0.8rem;
+  }
+  
+  .buttons .button {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Enhanced section titles styling */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin: 2rem 0 1.5rem 0;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+  border-radius: 14px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.section-title:hover::before {
+  opacity: 1;
+}
+
+.section-title:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Alternative modern style for section titles */
+.section-title-modern {
+  position: relative;
+  display: inline-block;
+  margin: 2rem 0 1.5rem 0;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border-radius: 50px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.section-title-modern::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.section-title-modern:hover::after {
+  left: 100%;
+}
+
+.section-title-modern:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+}
+
+/* Elegant minimal style for section titles */
+.section-title-elegant {
+  position: relative;
+  display: inline-block;
+  margin: 2.5rem 0 2rem 0;
+  padding: 0.5rem 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.section-title-elegant::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #e74c3c);
+  transition: width 0.3s ease;
+}
+
+.section-title-elegant:hover::after {
+  width: 100%;
+}
+
+.section-title-elegant:hover {
+  color: #34495e;
+  transform: translateX(5px);
+}
+
+/* New enhanced title style for L2, Perception, Reasoning */
+.enhanced-title {
+  position: relative;
+  display: inline-block;
+  margin: 2.5rem 0 2rem 0;
+  padding: 0.8rem 2rem;
+  background: #f8f9fa;
+  color: #2c3e50;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid #3498db;
+}
+
+.enhanced-title:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+}
+
+/* Specific styles for each section */
+.title-l2 {
+  border-left-color: #3498db;
+}
+
+.title-perception {
+  border-left-color: #e74c3c;
+}
+
+.title-reasoning {
+  border-left-color: #f39c12;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .enhanced-title {
+    font-size: 1.3rem;
+    padding: 0.7rem 1.5rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+}
+
+.project-bibtex {
+  margin: 1.5rem 0 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  border: 1px solid #dbdbdb;
+  background: #f5f5f5;
+  color: #4a4a4a;
+  text-align: left;
+}
+
+/* Independent result tabs, with the light spacing used by the project-page buttons. */
+.result-tabs {
+  gap: 0.65rem;
+  margin: 1.35rem 0 2rem;
+}
+
+.result-tabs .button {
+  margin: 0 !important;
+  border: 1px solid #d7dce3;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #363636;
+  box-shadow: 0 2px 7px rgba(35, 48, 65, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.result-tabs .button:hover {
+  transform: translateY(-1px);
+  border-color: #3273dc;
+  box-shadow: 0 4px 10px rgba(50, 115, 220, 0.16);
+}
+
+.result-tabs .button.is-link {
+  border-color: #3273dc;
+  background: #3273dc;
+  color: #ffffff;
+  box-shadow: 0 3px 9px rgba(50, 115, 220, 0.25);
+}
+
+.result-tabs .button.is-link:hover {
+  background: #2864c7;
+  border-color: #2864c7;
+}

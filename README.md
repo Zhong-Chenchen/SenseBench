@@ -1,14 +1,19 @@
 # SenseBench: A Benchmark for Remote Sensing Low-Level Visual Perception and Description in Large Vision-Language Models
 
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-green)](https://arxiv.org/abs/2605.10576)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Dataset-orange)](https://huggingface.co/datasets/Zhongchenchen/SenseBench)
+[![Leaderboard](https://img.shields.io/badge/Leaderboard-SenseBench-yellow)](https://zhong-chenchen.github.io/SenseBench/#results)
+
 > The dataset subset is available at [SenseBench_subset](https://huggingface.co/datasets/Zhongchenchen/SenseBench_subset) for portable access.
 
 > We will regularly maintain and update SenseBench and this repository to foster a comprehensive *remote sensing* community.
 ---
 
-## 📢 Latest Updates
-- **`02-05-2026`**: We release the code for inference and evaluation.
-- **`05-05-2026`**: We release the complete SenseBench benchmark in the [Hugging Face Dataset](https://huggingface.co/datasets/Zhongchenchen/SenseBench). 🔥🔥
+## 🔥 News
+
+- **`2026.09.25`** 🎉🎉 SenseBench has been accepted to **NeurIPS 2026** as a **Poster** (6/5/5)!
+- **`2026.05.05`** 🤗🤗 We release the complete SenseBench benchmark in the [Hugging Face Dataset](https://huggingface.co/datasets/Zhongchenchen/SenseBench).
+- **`2026.05.02`** 🤗🤗 We release the code for inference and evaluation.
 
 ---
 
